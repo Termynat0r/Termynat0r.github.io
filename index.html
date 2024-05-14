@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Parameters</title>
+</head>
+<body>
+<h1>URL Parameters</h1>
+<ul id="paramsList">
+</ul>
+
+<script>
+// Function to get URL parameters
+function getUrlParameters() {
+  const searchParams = new URLSearchParams(window.location.search);
+  const params = {};
+  for (const [key, value] of searchParams.entries()) {
+    params[key] = value;
+  }
+  return params;
+}
+
+// Function to display parameters in list
+function displayParameters() {
+  const paramsList = document.getElementById('paramsList');
+  const params = getUrlParameters();
+  for (const key in params) {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${key}: ${params[key]}`;
+    paramsList.appendChild(listItem);
+  }
+}
+
+// Call displayParameters when the page loads
+window.onload = displayParameters;
+</script>
+</body>
+</html>
